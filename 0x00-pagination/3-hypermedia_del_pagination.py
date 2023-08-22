@@ -40,6 +40,7 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
+        """get next page"""
         assert(page_size > 0)
         len_data = len(self.dataset())
 
