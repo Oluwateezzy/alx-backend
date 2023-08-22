@@ -27,25 +27,25 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-            """Get page"""
-            assert(isinstance(page, int) and isinstance(page_size, int))
-            assert(page > 0 and page_size > 0)
-            start, end = index_range(page, page_size)
-            return self.dataset()[start : end]
+        """Get page"""
+        assert(isinstance(page, int) and isinstance(page_size, int))
+        assert(page > 0 and page_size > 0)
+        start, end = index_range(page, page_size)
+        return self.dataset()[start: end]
     
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
-            """Get page"""
-            result = self.get_page(page, page_size)
-            average = len(self.__dataset) // page_size
+        """Get page"""
+        result = self.get_page(page, page_size)
+        average = len(self.__dataset) // page_size
+        return {
+            "page_size": len(result),
+            "page": page,
+            "data": result,
+            "next_page": page + 1 if (page + 1) <= average else None,
+            "prev_page": page - 1 if (page - 1) > 0 else None,
+            "total_pages": average
+        }
 
-            return {
-                 "page_size": len(result),
-                 "page": page,
-                 "data": result,
-                 "next_page": page + 1 if (page + 1) <= average else None,
-                 "prev_page": page - 1 if (page - 1) > 0 else None,
-                 "total_pages": average
-            }
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """Simple helper function"""
