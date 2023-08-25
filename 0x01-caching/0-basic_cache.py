@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 """ 0-main """
+""" BaseCaching defines:
+      - constants of your caching system
+      - where your data are stored (in a dictionary)
+"""
 BaseCaching = __import__('base_caching').BaseCaching
 
 
