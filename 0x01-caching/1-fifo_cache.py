@@ -11,17 +11,16 @@ class FIFOCache(BaseCaching):
     def __init__(self):
         """ initialize"""
         super().__init__()
-        self.queue = []
     
     def put(self, key, item):
         """put method"""
         if key and item:
             self.cache_data[key] = item
-            self.queue.append(key)
-            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                oldest_key = self.queue.pop()
-                self.cache_data.pop(oldest_key)
-                print("DISCARD: {}".format(oldest_key))
+
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            oldest_key = sorted(self.cache_data)[0]
+            self.cache_data.pop(oldest_key)
+            print("DISCARD: {}".format(oldest_key))
             
     
     def get(self, key):
