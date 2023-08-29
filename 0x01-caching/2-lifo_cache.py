@@ -11,7 +11,7 @@ class LIFOCache(BaseCaching):
     def __init__(self):
         """ initialize"""
         super().__init__()
-    
+
     def put(self, key, item):
         """ Add an item in the cache """
         if key and item:
@@ -21,7 +21,7 @@ class LIFOCache(BaseCaching):
             print('DISCARD:', self.last_item)
         if key:
             self.last_item = key
-    
+
     def get(self, key):
         """get method """
         if key is None or key not in self.cache_data:
