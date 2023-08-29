@@ -11,7 +11,7 @@ class FIFOCache(BaseCaching):
     def __init__(self):
         """ initialize"""
         super().__init__()
-    
+
     def put(self, key, item):
         """put method"""
         if key and item:
@@ -21,8 +21,7 @@ class FIFOCache(BaseCaching):
             oldest_key = sorted(self.cache_data)[0]
             self.cache_data.pop(oldest_key)
             print("DISCARD: {}".format(oldest_key))
-            
-    
+
     def get(self, key):
         """get method"""
         if key is None or key not in self.cache_data:
