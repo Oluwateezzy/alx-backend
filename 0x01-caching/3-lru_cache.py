@@ -16,6 +16,7 @@ class LRUCache(BaseCaching):
         self.cache_data = OrderedDict()
     
     def put(self, key, item):
+        """ put method """
         if key and item:
             self.cache_data[key] = item
             self.cache_data.move_to_end(key)
@@ -24,6 +25,7 @@ class LRUCache(BaseCaching):
             print('DISCARD:', lru[0])
     
     def get(self, key):
+        """ Get method """
         if key is None or key not in self.cache_data:
             return None
         self.cache_data.move_to_end(key)
