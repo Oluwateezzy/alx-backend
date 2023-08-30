@@ -20,15 +20,14 @@ class MRUCache(BaseCaching):
         if key and item:
             if key in self.cache_data:
                 self.cache_data.update({key: item})
-            else:
-                self.cache_data[key] = item
-            self.cache_data.move_to_end(key)
-        
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            mru = self.cache_data.popitem(last=True)
-            print('DISCARD:', mru[0])
-    
+                self.cache_data.move_to_end(key)
+            elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                mru = self.cache_data.popitem(last=True)
+                print('DISCARD:', mru[0])
+            self.cache_data[key] = item
+
     def get(self, key):
+        """ Get method """
         if key is None or key not in self.cache_data:
             return None
         self.cache_data.move_to_end(key)
