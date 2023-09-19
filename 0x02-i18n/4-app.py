@@ -19,7 +19,7 @@ app.url_map.strict_slashes = False
 @app.route('/')
 def index():
     """ index page """
-    return render_template('3-index.html')
+    return render_template('4-index.html')
 
 
 @babel.localeselector
