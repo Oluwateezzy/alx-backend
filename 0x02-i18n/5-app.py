@@ -23,15 +23,18 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 def get_user(user_id):
     """ get user """
     return users.get(user_id)
+
 
 @app.before_request
 def before_request():
     """ before request """
     user_id = request.args.get('login_as', type=int)
     g.user = get_user(user_id) if user_id else None
+
 
 @app.route('/')
 def index():
