@@ -20,3 +20,4 @@ keys.forEach((key, index) => {
 client.hgetall(KEY, (err, result) => {
     console.log(result)
 })
+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
